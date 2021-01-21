@@ -44,11 +44,11 @@
             };
         },
         created () {
-          if (localStorage.getItem('main') == null) localStorage.setItem('main', JSON.stringify({
+          /*if (localStorage.getItem('main') == null) localStorage.setItem('main', JSON.stringify({
                 _lang: 'de'
             }));
             else this.$i18n.locale = this.flagOld = JSON.parse(localStorage.getItem('main'))._lang;
-        },
+        */},
         computed: {
             newFlag () {
                 return this.$i18n.locale;
@@ -65,16 +65,16 @@
         methods: {
             startLanguageAnim () {
                 if (this.rollOut) return;
-                if (this.$i18n.locale === 'de') this.$i18n.locale = 'en';
-                else this.$i18n.locale = 'de';
+                if (this.i18n.locale === 'de') this.i18n.locale = 'en';
+                else this.i18n.locale = 'de';
 
                 let storage = JSON.parse(localStorage.getItem('main'));
-                storage._lang = this.$i18n.locale;
+                storage._lang = this.i18n.locale;
                 localStorage.setItem('main', JSON.stringify(storage));
 
                 this.rollOut = true;
                 setTimeout(() => {
-                    this.flagOld = this.$i18n.locale;
+                    this.flagOld = this.i18n.locale;
                     this.rollOut = false;
                 }, 1000);
             },

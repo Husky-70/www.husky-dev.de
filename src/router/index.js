@@ -3,7 +3,6 @@ import VueRouter from 'vue-router';
 import * as pg from '@/pages/pages';
 
 Vue.use(VueRouter);
-
 const routes = [
   {
     path: '/',
@@ -30,6 +29,11 @@ const routes = [
     component: pg.RockstarMissions
   },
   {
+    path: '/joinplaylist',
+    name: 'JoinPlaylist',
+    component: pg.JoinPlaylist
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -40,6 +44,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  mode:'history',
   routes
 });
 
