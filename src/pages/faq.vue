@@ -11,7 +11,7 @@
             </b-col>
         </b-row>
         <hr />
-        <b-row class="faq-row">
+<!--        <b-row class="faq-row">
             <b-col>
                 <div class="faq-question">
                     {{$t('pages.faq.questionFeatureJob')}}
@@ -22,7 +22,7 @@
                 </div>
             </b-col>
         </b-row>
-        <hr />
+        <hr />-->
         <b-row class="faq-row">
             <b-col>
                 <div class="faq-question">
@@ -76,7 +76,7 @@
                 </div>
             </b-col>
         </b-row>
-        <hr />
+<!--        <hr />
         <b-row>
             <b-col>
                 <div class="faq-question">
@@ -86,7 +86,7 @@
                     {{$t('pages.faq.answer10k')}}
                 </div>
             </b-col>
-        </b-row>
+        </b-row>-->
     </div>
 </template>
 

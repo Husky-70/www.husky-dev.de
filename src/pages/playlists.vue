@@ -23,8 +23,7 @@
             </b-row>
         </b-col>
         <b-col cols="12" md="4" class="d-flex"
-               v-for="(job, index) in playlists.l" :key="job.id"
-        >
+               v-for="(job, index) in playlists.l" :key="job.id">
             <div class="job-card-container xyxxx d-flex w-100"
                  :style="{animationDelay: (index * 130) + 'ms', padding: '1rem'}">
                 <a class="d-flex w-100">

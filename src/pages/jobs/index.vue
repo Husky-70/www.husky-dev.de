@@ -1,12 +1,12 @@
 <template>
-    <b-row>
-        <b-col cols="12">
+    <v-row>
+<!--        <b-col cols="12">
             <vu-breadcrumb>
                 <vu-breadcrumb-item :to="'/'">Home</vu-breadcrumb-item>
                 <vu-breadcrumb-item active>Selected Modded Jobs</vu-breadcrumb-item>
             </vu-breadcrumb>
-        </b-col>
-        <b-col cols="12"
+        </b-col>-->
+        <v-col cols="12"
                md="4"
                class="d-flex"
                v-for="job in jobs"
@@ -48,31 +48,32 @@
                     </a>
                 </a>
             </div>
-        </b-col>
-    </b-row>
+        </v-col>
+    </v-row>
 </template>
 
 <script>
-    import axios from "axios";
     import Ps4 from "../../components/badges/ps4";
-    import Xbox360 from "../../components/badges/xbox360";
+    //import Xbox360 from "../../components/badges/xbox360";
 
     export default {
         name: "jobs",
-        components: {Xbox360, Ps4},
+        components: { Ps4},
         data () {
             return {
                 jobs: []
             };
         },
         mounted () {
-            axios.get('/getJobs').then((res) => {
-                this.jobs = res.data;
-            });
+          this.$con.jsonRequest('jobs/getJobs').then(res => {
+            if(res.ok){
+              this.jobs = res.jobs;
+            }
+          });
         },
         filters: {
             truncrate (str, symbolsCount, endWith) {
-                if (str.length > symbolsCount) return str.substring(0, symbolsCount) + endWith;
+              if (str.length > symbolsCount) return str.substring(0, symbolsCount) + endWith;
                 else return str;
             },
             strConvert (str) {
