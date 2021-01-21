@@ -1,0 +1,49 @@
+{
+    "global": {
+        "updatingLang": "Sprache einstellen...",
+        "fetchJob": "Job wird heruntergeladen..."
+    },
+    "pages": {
+        "home": {
+            "lastCheck": "Letzter Check",
+            "hashed": "gehashed",
+            "unhashed": "nicht gehashed",
+            "dlHashed": "Downloade und vergleiche gehashte Tunables aus dem Archiv",
+            "dlUnhashed": "Downloade und vergleiche nicht gehashte Tunables aus dem Archiv (nur für ausgweählte Benutzer)",
+            "visitPs4": "Besuche die Seite von dem Browser deiner PS4 um diese Funktion nutzen zu können",
+            "joinFreemode": "Freien Modus beitreten (Aktivität)",
+            "joinFremodeDesc": "Du hast keine Aktivitäten? Benutze diese Option um dem freien Modus direkt beizutreten oder einfach für die Aktivitäts-Meldung \uD83D\uDE09\n"
+        },
+        "faq": {
+            "questionJoinJob": "Was macht der Job beitreten Button? Warum funktioniert er nicht?",
+            "answerJoinJob": "Das ist ein Feature, welches es nur für die PS4 gibt. Es erlaubt dir, den Job aus dem PS4 Browser zu starten ohne das du den Job markieren musst. Du kannst ihn nicht verwenden wenn du diese Seite nicht auf deiner PS4 aufrufst. Ausserdem ist diese Funktion vorerst nur ausgewählten Benutzern vorbehalten.",
+            "questionFeatureJob": "Kann ich meinen Job auf deiner Seite veröffentlichen?",
+            "answerFeatureJob": "Ja, solange es ein gemoddeter/aussergewühnlicher Job ist. Wenn du daran interessiert bist, sende mir eine Nachricht auf",
+            "questionNoPC": "Warum gibt es keine Xbox / PC versionen deiner Jobs?",
+            "answerNoPC": "Da ich weder auf Xbox, noch auf PC spiele wird es dafür keine Jobs geben. Wenn jemand anderes solche Jobs für Xbox / PC erstellen sollte werde ich diese zu der Datenbank hinzufügen.",
+            "questionDunce": "Spielverderberhut, Joggers, Farbige Helme...",
+            "answerDunce": "...und alles andere was es nicht in irgendeinem Spielmodus gibt wird auch in der Zukunft NICHT kommen!",
+            "question10k": "Werden die 10k jobs irgendwann wieder kommen?",
+            "answer10k": "Nein",
+            "questionJugger": "Warum kann ich das Juggernaut Outfit nicht speichern?",
+            "answerJugger": "Das komplette Juggernaut Outfit wurde vor einiger Zeit geblacklisted. Du kannst nur noch den Helm speichern indem du den Teleskop Glitch machst."
+        },
+        "jobs":{
+            "job": {
+                "createdBy": "Erstellt von",
+                "mode": "Modus",
+                "statistics": "Statistiken",
+                "type": "Typ",
+                "jobtype": "Jobtyp",
+                "minPlayers": "Mindestspieleranzahl",
+                "maxPlayers": "Maximale Spieleranzahl",
+                "openAtRank": "Offen ab Rang",
+                "ratings": "Bewertungen",
+                "posRatings": "Positive Bewertungen",
+                "negRatings": "Negative Bewertungen",
+                "bookmarked": "Markiert",
+                "average": "Durchschnitt"
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "global": {
+        "updatingLang": "Updating language...",
+        "fetchJob": "Fetching job..."
+    },
+    "pages": {
+        "home": {
+            "lastCheck": "Last Check",
+            "hashed": "hashed",
+            "unhashed": "unhashed",
+            "dlHashed": "Download and compare hashed tunables from archive",
+            "dlUnhashed": "Download and compare unhashed tunables from archive (only available for specific users)",
+            "visitPs4": "Visit this site on your PS4's browser to use it",
+            "joinFreemode": "Join freemode (recent activity)",
+            "joinFremodeDesc": "You don't have a recent activity? Use this option to join freemode directly or just for the recent alert \uD83D\uDE09\n"
+        },
+        "faq": {
+            "questionJoinJob": "What is the join job button supposed to do? Why is it not working?",
+            "answerJoinJob": "This feature is an PS4 only feature. It allows you to join the job from browser without the need of bookmarking it. You will not be able to use it, if you're not visiting this site from your PS4's browser. Furthermore it's only available for some friends, it may come for everyone in future.",
+            "questionFeatureJob": "Can I feature my job on your site?",
+            "answerFeatureJob": "Yes, as long as it's a special/modded job. If you're interested, just send me a message on",
+            "questionNoPC": "Why are there no XBOX / PC versions of your jobs?",
+            "answerNoPC": "As I don't play on PC or Xbox there will be no similar jobs in future. If people send me working similar jobs for Xbox or PC, I will add them to the Database.",
+            "questionDunce": "Duncecap, Joggers, colored Helmets...",
+            "answerDunce": "...and everything else which is not available in any game mode will NOT come in future!",
+            "question10k": "Will 10k per kill jobs come back in future?",
+            "answer10k": "No",
+            "questionJugger": "I can't save the juggernaut outfit - why?",
+            "answerJugger": "The full juggernaut outfit has been blacklisted long time ago. You can only save the helmet by doing the telescope glitch."
+        },
+        "jobs":{
+            "job": {
+                "createdBy": "Created by",
+                "mode": "Mode",
+                "statistics": "Statistics",
+                "type": "Type",
+                "jobtype": "Jobtype",
+                "minPlayers": "Minimum players",
+                "maxPlayers": "Maximum players",
+                "openAtRank": "Open at rank",
+                "ratings": "Ratings",
+                "posRatings": "Positive ratings",
+                "negRatings": "Negative ratigns",
+                "bookmarked": "Bookmarked",
+                "average": "Average"
+            }
+        }
+    }
+}
