@@ -1,11 +1,11 @@
 <template>
 
-    <b-row>
-        <b-col cols="12" xl="6" class="d-flex">
+    <v-row justify="center">
+        <v-col cols="12" lg="6" xl="5">
             <div class="categories-container">
                 <router-link tag="div" to="/jobs" class="categories-inner">
                     <div class="categories-image">
-                        <img src="@/js/assets/peterGriffin.jpg">
+                        <img src="@/assets/peterGriffin.jpg">
                         <div class="categories-text-container">
                             <div class="categories-title">
                                 Jobs
@@ -18,50 +18,51 @@
 
                 </router-link>
             </div>
-        </b-col>
-        <b-col cols="12" xl="6" class="d-flex">
-            <div class="categories-container">
-                <router-link tag="div" to="/playlists" class="categories-inner">
-                    <div class="categories-image">
-                        <img src="@/js/assets/lester.jpg">
-                        <div class="categories-text-container">
-                            <div class="categories-title">
-                                Playlists
-                            </div>
-                            <div class="categories-description">
-                                Browse through available Playlists and launch them from Browser (PS4 Only)
-                            </div>
-                        </div>
-                    </div>
+        </v-col>
+      <v-col cols="12" lg="6" xl="5">
+        <div class="categories-container">
+          <router-link tag="div" :to="{name: 'RockstarMissions'}" class="categories-inner">
+            <div class="categories-image">
+              <img src="@/assets/lester.jpg">
+              <div class="categories-text-container">
+                <div class="categories-title">
+                  Rockstar Missions
+                </div>
+                <div class="categories-description">
+                  Browse through all Rockstar Jobs / Launch jobs from browser (PS4 only)
+                </div>
+              </div>
+            </div>
+          </router-link>
 
-                </router-link>
-            </div>
-        </b-col>
-        <b-col cols="12" xl="6" class="d-flex">
+        </div>
+      </v-col>
+        <v-col cols="12" lg="6" xl="5">
             <div class="categories-container">
-                <a :href="freemode" class="categories-inner locked" @click="joinFreemode">
-                    <div class="categories-image">
-                        <img src="@/js/assets/osiris.jpg">
-                        <div v-if="!isPlaystation4" class="categories-locked">
-                            <span>{{$t('pages.home.visitPs4')}}</span>
-                        </div>
-                        <div class="categories-text-container">
-                            <div class="categories-title">
-                                {{$t('pages.home.joinFreemode')}}
+                        <a :href="freemode" class="categories-inner locked" @click="joinFreemode">
+                            <div class="categories-image">
+                                <img src="@/assets/osiris.jpg">
+                                <div v-if="!isPlaystation4" class="categories-locked">
+                                    <span>{{$t('pages.home.visitPs4')}}</span>
+                                </div>
+                                <div class="categories-text-container">
+                                    <div class="categories-title">
+                                        {{$t('pages.home.joinFreemode')}}
+                                    </div>
+                                    <div class="categories-description">
+                                        {{$t('pages.home.joinFremodeDesc')}}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="categories-description">
-                                {{$t('pages.home.joinFremodeDesc')}}
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                        </a>
             </div>
-        </b-col>
-        <b-col cols="12" xl="6" class="d-flex">
+        </v-col>
+
+        <v-col cols="12" lg="6" xl="5">
             <div class="categories-container">
                 <div class="categories-inner locked">
                     <div class="categories-image">
-                        <img src="@/js/assets/polCar_low.jpg">
+                        <img src="@/assets/polCar_low.jpg">
                         <div class="categories-last-check">
                             {{$t('pages.home.lastCheck')}}: {{bg_LastCheck}}
                         </div>
@@ -80,7 +81,7 @@
 
                 </div>
             </div>
-        </b-col>
+        </v-col>
         <!--<b-col cols="12" xl="6" class="d-flex">
             <div class="categories-container">
                 <div class="categories-inner locked">
@@ -126,7 +127,7 @@
                 </div>
             </div>
         </b-col>-->
-    </b-row>
+    </v-row>
 
     <!--<b-container class="d-flex flex-column" fluid style="height: 100vh; overflow: scroll;">
         <b-row style="justify-content: center; height: 100%;margin: 0">
@@ -201,7 +202,7 @@
 
     //require('../../static/global.css')
     import axios from 'axios';
-    import Ps4 from "./badges/ps4";
+    //import Ps4 from "./badges/ps4";
     import moment from 'moment';
     /*import racecar from '../../src/components/racecar.vue'
     import jet from '../../src/components/jet.vue'
@@ -214,7 +215,7 @@
 
     export default {
         components: {
-            Ps4
+            //Ps4
             /*jet,
             coding,
             ps4*/
@@ -222,7 +223,6 @@
         data () {
             return {
                 ip: ip,
-                jobs: [],
                 bg_LastCheck: "0",
                 tu_LastCheck: 0,
                 freemode: '#'
@@ -240,49 +240,37 @@
         },
 
         created () {
-            axios.get('/test');
+          this.$con.jsonRequest('logs/Solve', {parameter: "bg_last_checked"}).then(res => {
+            if(res.ok) {
+              this.bg_LastCheck = moment(res.fullDate).format("ddd DD, HH:mm:ss");
+            }
+          });
+          this.$con.jsonRequest('logs/Solve', {parameter: "tu_last_checked"}).then(res => {
+            if(res.ok) {
+              this.tu_LastCheck = moment(res.fullDate).format("ddd DD, HH:mm:ss");
+            }
+          });
+          this.$con.jsonRequest('logs/Solve', {parameter: "visit"}).then(res => {
+            if(res.ok) {
+              localStorage.setItem('pageKey', "true");
+            }
+          });
         },
 
         mounted () {
-            axios.get('https://api.husky-dev.de/getJobs').then(res => {
-                this.jobs = res.data;
-            });
-            axios.get('https://api.husky-dev.de/logs/bg_last_checked').then((res) => {
-                this.bg_LastCheck = moment(res.data[0].fullDate).format("ddd DD, HH:mm:ss");
-            });
-            axios.get('https://api.husky-dev.de/logs/tu_last_checked').then((res) => {
-                this.tu_LastCheck = moment(res.data[0].fullDate).format("ddd DD, HH:mm:ss");
-            });
-            if (localStorage.getItem('pageKey') === null || localStorage.getItem('pageKey') !== "true") {
-                axios.get('https://api.husky-dev.de/logs/visit').then((res) => {
-                    localStorage.setItem('pageKey', "true");
-                });
+            if(this.isPlaystation4) {
+              this.$con.jsonRequest('misc/goToFreemode', {ua: window.navigator.userAgent}).then(res => {
+                if (res.ok) {
+                  this.freemode = res.freemode;
+                }
+              });
             }
-            if (window.navigator.userAgent.indexOf("PlayStation 4") > -1) {
-                axios.post('/misc/goToFreemode', {
-                    ua: window.navigator.userAgent
-                }, {withCredentials: true}).then(res => {
-                    if (res.data.ok) {
-                        this.freemode = res.data.freemode;
-                        //alert(res.data.ok)
-                        //alert(JSON.stringify(res.data))
-                    } else {
-                        //alert(res.data.msg)
-                    }
-                }).catch(err => {
-                    //alert(err)
-                });
-            } else {
-                //alert("outside")
-            }
-
-            //http://ipinfo.io/json
         },
 
         methods: {
             joinFreemode () {
                 if (this.isPlaystation4) {
-                    axios.get('https://api.husky-dev.de/logs/goToFreemode');
+                  this.$con.jsonRequest('logs/Solve', {parameter: "goToFreemode"});
                 }
             }
         },

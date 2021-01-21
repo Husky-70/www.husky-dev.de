@@ -1,8 +1,8 @@
 <template>
-    <div class="navb" :style="{maxHeight: expanded ? ((6 * 3) + 4) + 'rem': '4rem' }" >
+    <div class="navb" :style="{maxHeight: expanded ? ((6 * 3) + 4) + 'rem': '4rem' }">
         <div class="nav-item-main">
             <router-link tag="div" to="/" class="nav-image">
-                <img src="@/js/assets/husky.png" />
+                <img src="@/assets/husky.png" />
             </router-link>
             <div class="burger">
                 <button @click="expanded = !expanded">
@@ -14,16 +14,16 @@
         </div>
         <router-link to="/" tag="div" class="nav-item" :class="$route.name === 'home' ? 'active':''"><span>Home</span></router-link>
         <router-link to="/jobs" tag="div" class="nav-item"><span>Modded Jobs</span></router-link>
-        <router-link :to="{name: 'rockstarMissions'}" tag="div" class="nav-item"><span>R* Missions</span></router-link>
-        <router-link to="/playlists" tag="div" class="nav-item"><span>Playlists</span></router-link>
-        <!--<router-link to="/scaccounts" tag="div" class="nav-item"><span>SC-Accounts</span></router-link>-->
+        <router-link :to="{name: 'RockstarMissions'}" tag="div" class="nav-item"><span>R* Missions</span></router-link>
+<!--        <router-link to="/playlists" tag="div" class="nav-item"><span>Playlists</span></router-link>
+        &lt;!&ndash;<router-link to="/scaccounts" tag="div" class="nav-item"><span>SC-Accounts</span></router-link>&ndash;&gt;-->
         <router-link to="/faq" tag="div" class="nav-item"><span>FAQ</span></router-link>
         <div class="nav-item" style="position: relative; padding: .5rem">
 
-            <img :class="rollOut ? 'roll-out':''" :src="'/images/'+ oldFlag + '.png'"
+            <img :class="rollOut ? 'roll-out':''" :src="require(`../assets/images/${oldFlag}.png`)"
                  style="position: absolute"
                  @click="startLanguageAnim">
-            <img :class="rollOut ? 'fade-in':''" :src="'/images/'+ newFlag + '.png'"
+            <img :class="rollOut ? 'fade-in':''" :src="require(`../assets/images/${newFlag}.png`)"
                  style="position: absolute"
                  @click="startLanguageAnim">
         </div>
@@ -38,14 +38,14 @@
         data () {
             return {
                 flagNew: '',
-                flagOld: 'en',
+                flagOld: 'de',
                 expanded: false,
                 rollOut: false
             };
         },
         created () {
-            if (localStorage.getItem('main') == null) localStorage.setItem('main', JSON.stringify({
-                _lang: 'en'
+          if (localStorage.getItem('main') == null) localStorage.setItem('main', JSON.stringify({
+                _lang: 'de'
             }));
             else this.$i18n.locale = this.flagOld = JSON.parse(localStorage.getItem('main'))._lang;
         },
@@ -59,7 +59,7 @@
         },
         watch: {
             '$route.path'() {
-                this.expanded = false
+                this.expanded = false;
             }
         },
         methods: {

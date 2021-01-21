@@ -4,7 +4,7 @@ body {
     background-size: cover;
     color: white;
     background-color: #191919;
-    font-weight: lighter;
+    font-weight: 400;
 }
 
 body {
@@ -117,7 +117,7 @@ a {
         &::before {
             position: absolute;
             content: '';
-            background: url("/images/lock.svg");
+            background: url("/assets/images/lock.svg");
             background-size: 1.5rem;
             /*transform: rotate(30deg);*/
             left: 0;
@@ -137,4 +137,8 @@ hr {
     background: linear-gradient(135deg, rgba(255, 126, 0, 1) 0%, rgba(255, 0, 16, 1) 33%, rgba(255, 0, 16, 0) 67%);
     border: 0;
     margin: 1.5rem 0;
+}
+
+.v-application a {
+    color: white !important;
 }

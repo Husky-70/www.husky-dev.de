@@ -1,19 +1,19 @@
 <template>
-    <b-row>
-        <b-col cols="12">
+    <v-row>
+<!--        <v-col cols="12">
             <vu-breadcrumb>
                 <vu-breadcrumb-item :to="'/'">Home</vu-breadcrumb-item>
                 <vu-breadcrumb-item active>Rockstar Missions</vu-breadcrumb-item>
             </vu-breadcrumb>
-        </b-col>
-        <b-col cols="12">
-            <b-row style="justify-content: flex-end">
-                <b-col cols="12" md="3">
-                    <vu-select :items="categories" v-model="selected" @input="downloadJobs()" />
-                </b-col>
-            </b-row>
-        </b-col>
-        <b-col cols="12" md="4" class="d-flex" v-for="job in jobs" :key="job.id">
+        </v-col>-->
+        <v-col cols="12">
+            <v-row style="justify-content: flex-end">
+                <v-col cols="12" md="3">
+                    <v-select :items="categories" v-model="selected" @input="downloadJobs()" />
+                </v-col>
+            </v-row>
+        </v-col>
+        <v-col cols="12" md="4" class="d-flex" v-for="job in jobs" :key="job.id">
             <div class="job-card-container d-flex" style="padding: 1rem">
                 <a class="d-flex">
                     <a :href="'https://socialclub.rockstargames.com/job/gtav/' + job.jobId" target="_blank" class="job-card">
@@ -47,22 +47,18 @@
                     </a>
                 </a>
             </div>
-        </b-col>
-    </b-row>
+        </v-col>
+    </v-row>
 </template>
 
 <script>
     import axios from "axios";
-    import Ps4 from "@/js/components/badges/ps4";
-    import Xbox360 from "@/js/components/badges/xbox360";
-    import VuSelect from "../../components/vu-select";
-    import VuBreadcrumb from "../../components/vu-breadcrumb";
-    import VuBreadcrumbItem from "../../components/vu-breadcrumb-item";
+    /*import Ps4 from "@/js/components/badges/ps4";
+    import Xbox360 from "@/js/components/badges/xbox360";*/
     import _ from 'lodash';
 
     export default {
         name: "rockstarMissions",
-        components: {VuBreadcrumbItem, VuBreadcrumb, VuSelect, Xbox360, Ps4},
         data () {
             return {
                 jobs: [],
@@ -73,21 +69,31 @@
         },
         watch: {
             '$i18n.locale' () {
-                axios.get('/fetch?method=getAvailableRCategories&l=' + this.$i18n.locale).then(res => {
-                    //this.loading = false;
-                    this.categories = [];
-                    res.data.forEach((item) => {
-                        this.categories.push({value: item.sid, text: item.m + " (" + item.c + ")"});
-                    });
-                });
+                this.getCategories();
             }
         },
         methods: {
+          getCategories(){
+            this.$con.jsonRequest('jobs/getAvailableRCategories', {
+              l: this.$i18n.locale
+            }).then(res => {
+              if(res.ok){
+                this.categories = [];
+                res.categories.forEach((item) => {
+                  this.categories.push({value: item.sid, text: item.m + " (" + item.c + ")"});
+                });
+              }
+            });
+          },
             downloadJobs () {
                 this.loading = true;
-                axios.get('/fetch?method=getRockstarMissions&type=' + this.selected).then(res => {
-                    this.jobs = res.data;
+                this.$con.jsonRequest('jobs/getRockstarMissions', {
+                  type: this.selected
+                }).then(res => {
+                  if(res.ok) {
+                    this.jobs = res.jobs;
                     this.loading = false;
+                  }
                 });
             },
             getPsPath (id) {
@@ -112,12 +118,7 @@
             }
         },
         created () {
-            axios.get('/fetch?method=getAvailableRCategories&l=' + this.$i18n.locale).then(res => {
-                //this.loading = false;
-                res.data.forEach((item) => {
-                    this.categories.push({value: item.sid, text: item.m + " (" + item.c + ")"});
-                });
-            });
+          this.getCategories();
             let domainName = window.location.hostname;//.split('.')[0]; //ie... google
             //console.log(domainName);
             this.downloadJobs();
